@@ -1,0 +1,4 @@
+com/example/inventory/InventoryApplication.class
+com/example/inventory/ProductController.class
+com/example/inventory/Product.class
+com/example/inventory/ProductRepository.class

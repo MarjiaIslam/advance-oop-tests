@@ -1,0 +1,61 @@
+/* App.css - Lavender & Black Theme */
+body {
+  background-color: #0f0f0f; /* Black/Dark Gray */
+  color: #E6E6FA; /* Lavender */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide Number Input Arrows (Scrollers) */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Input Fields Styling */
+input {
+  background-color: #1a1a1a;
+  border: 1px solid #E6E6FA;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #967bb6; /* Darker Lavender */
+  box-shadow: 0 0 5px #967bb6;
+}
+
+/* Button Styling */
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background-color: #E6E6FA; /* Lavender */
+  color: black;
+}
+
+.btn-primary:hover {
+  background-color: #D8BFD8; /* Thistle */
+}
+
+.btn-danger {
+  background-color: #ff4444;
+  color: white;
+}
