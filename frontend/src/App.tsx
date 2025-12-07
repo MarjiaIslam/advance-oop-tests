@@ -2,24 +2,27 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
+// 1. FIXED INTERFACE: Backend sends numbers, so we must expect numbers here.
 interface Product {
   id?: number;
   name: string;
-  price: string; 
-  quantity: string;
+  price: number;     // Changed from string to number
+  quantity: number;  // Changed from string to number
 }
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   
-  // Form State
+  // Form State (Input fields are always strings in HTML)
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
   const [editingId, setEditingId] = useState<number | null>(null);
 
- 
-  const API_URL = "https://stunning-space-waffle-jj74rw456qxgfqxr7-8080.app.github.dev/api/products"; 
+  // ---------------------------------------------------------------------------
+  // ⚠️ VERIFY THIS URL: It changes every time you restart Codespaces!
+  // ---------------------------------------------------------------------------
+  const API_URL = "https://probable-system-5gr4vp4q6prrcpxgg-8080.app.github.dev/api/products"; 
 
   // Load Data
   useEffect(() => {
@@ -29,7 +32,7 @@ const App: React.FC = () => {
   const fetchProducts = async () => {
     try {
       const res = await axios.get(API_URL);
-      // Convert numbers to strings for display consistency if needed
+      // FIXED: Now works because Interface expects numbers, and res.data has numbers
       setProducts(res.data);
     } catch (error) {
       console.error("Error connecting to Backend. CHECK API_URL!", error);
@@ -40,7 +43,7 @@ const App: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Prepare data (Convert strings back to numbers for backend)
+    // Prepare data (Convert form strings to numbers for the Backend)
     const payload = {
       name: name,
       price: parseFloat(price),
@@ -77,7 +80,8 @@ const App: React.FC = () => {
 
   const handleEdit = (p: Product) => {
     setName(p.name);
-    setPrice(String(p.price));
+    // FIXED: Convert the database numbers to strings so they show up in the Input Box
+    setPrice(String(p.price)); 
     setQuantity(String(p.quantity));
     setEditingId(p.id!);
   };
